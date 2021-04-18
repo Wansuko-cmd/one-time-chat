@@ -9,6 +9,8 @@ plugins {
 
 group = "com.example"
 version = "0.0.1"
+val mainClassName = "io.ktor.server.netty.EngineMain"
+
 application {
     mainClass.set("com.example.ApplicationKt")
 }
@@ -22,4 +24,6 @@ dependencies {
     implementation("io.ktor:ktor-server-netty:$ktor_version")
     implementation("ch.qos.logback:logback-classic:$logback_version")
     testImplementation("io.ktor:ktor-server-tests:$ktor_version")
+
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version")
 }
