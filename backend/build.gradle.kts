@@ -44,4 +44,7 @@ dependencies {
 
     //flyway
     implementation("org.flywaydb:flyway-core:$flywayVersion")
+
+    //WebSocket
+    implementation("io.ktor:ktor-websockets:$ktorVersion")
 }
