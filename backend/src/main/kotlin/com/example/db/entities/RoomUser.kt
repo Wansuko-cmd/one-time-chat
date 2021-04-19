@@ -10,5 +10,4 @@ class RoomUser(id: EntityID<Int>) : IntEntity(id) {
 
     var roomId = RoomUsers.roomId
     var userId = RoomUsers.userId
-    var hasAuthority = RoomUsers.hasAuthority
 }

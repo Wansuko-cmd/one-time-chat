@@ -10,6 +10,4 @@ class User(id: EntityID<Int>) : IntEntity(id){
 
     var name by Users.name
     var imagePath by Users.imagePath
-    var email by Users.email
-    var password by Users.password
 }

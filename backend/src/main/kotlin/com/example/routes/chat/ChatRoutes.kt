@@ -1,16 +1,21 @@
 package com.example.routes.chat
 
 import io.ktor.application.*
+import io.ktor.http.*
 import io.ktor.response.*
 import io.ktor.routing.*
-import io.ktor.websocket.*
+import java.util.*
 
 fun Route.chatRoutes(){
     get("/chat") {
-        call.respondText("chats")
+
+        val hash = UUID.randomUUID().toString()
+        call.respondRedirect("/chat/$hash")
     }
 
-    webSocket("/chat/{hash}") {
+    get("/chat/{hash}") {
+        val hash = call.parameters["hash"] ?: return@get call.respondText("Bad Request", status = HttpStatusCode.BadRequest)
 
+        call.respondText(hash)
     }
 }
