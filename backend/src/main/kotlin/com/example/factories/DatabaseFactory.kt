@@ -4,6 +4,7 @@ import com.typesafe.config.ConfigFactory
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import io.ktor.config.*
+import org.flywaydb.core.Flyway
 import org.jetbrains.exposed.sql.Database
 
 object DatabaseFactory {
@@ -16,6 +17,10 @@ object DatabaseFactory {
 
     fun init(){
         Database.connect(hikari())
+        Flyway.configure()
+            .dataSource(dbUrl, dbUser, dbPassword)
+            .load()
+            .migrate()
     }
 
     private fun hikari(): HikariDataSource{
