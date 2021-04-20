@@ -3,6 +3,8 @@ package com.example
 import com.example.factories.DatabaseFactory
 import com.example.routes.mainRoutes
 import io.ktor.application.*
+import io.ktor.http.cio.websocket.*
+import io.ktor.routing.*
 import io.ktor.websocket.*
 
 

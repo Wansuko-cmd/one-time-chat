@@ -4,8 +4,10 @@ import com.example.db.entities.Room
 import com.example.db.tables.Rooms
 import io.ktor.application.*
 import io.ktor.http.*
+import io.ktor.http.cio.websocket.*
 import io.ktor.response.*
 import io.ktor.routing.*
+import io.ktor.websocket.*
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.transactions.transaction
 import java.util.*
@@ -33,12 +35,16 @@ fun Route.chatRoutes(){
             }
         }
 
-        call.respondRedirect("/chat/$newHash")
+        call.respondText(newHash)
     }
 
-    get("/chat/{hash}") {
-        val hash = call.parameters["hash"] ?: return@get call.respondText("Bad Request", status = HttpStatusCode.BadRequest)
+    webSocket("/chat/{hash}") {
+        val hash = call.parameters["hash"] ?: return@webSocket call.respondText("Bad Request", status = HttpStatusCode.BadRequest)
 
-        call.respondText(hash)
+        try{
+            send(hash)
+        }catch (e: Exception){
+            return@webSocket call.respondText("Bad Request", status = HttpStatusCode.BadRequest)
+        }
     }
 }
