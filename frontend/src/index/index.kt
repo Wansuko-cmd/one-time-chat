@@ -1,14 +1,17 @@
 package index
 
-import app.*
-import kotlinext.js.*
 import react.dom.*
-import kotlin.browser.*
+import react.RBuilder
+import react.RComponent
+import react.RProps
+import react.RState
 
-fun main(args: Array<String>) {
-    requireAll(require.context("src", true, js("/\\.css$/")))
-
-    render(document.getElementById("root")) {
-        app()
+class Index : RComponent<RProps, RState>() {
+    override fun RBuilder.render() {
+        h1 {
+            +"Hello World"
+        }
     }
 }
+
+fun RBuilder.index() = child(Index::class) {}

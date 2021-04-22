@@ -1,27 +1,11 @@
 package app
 
-import react.*
+import kotlinx.browser.document
 import react.dom.*
-import logo.*
-import ticker.*
+import router
 
-class App : RComponent<RProps, RState>() {
-    override fun RBuilder.render() {
-        div("App-header") {
-            logo()
-            h2 {
-                +"Welcome to React with Kotlin"
-            }
-        }
-        p("App-intro") {
-            +"To get started, edit "
-            code { +"app/App.kt" }
-            +" and save to reload."
-        }
-        p("App-ticker") {
-            ticker()
-        }
+fun main(args: Array<String>) {
+    render(document.getElementById("root")) {
+        router()
     }
 }
-
-fun RBuilder.app() = child(App::class) {}
