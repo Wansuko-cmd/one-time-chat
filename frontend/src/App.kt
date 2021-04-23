@@ -1,7 +1,5 @@
-package app
-
 import kotlinx.browser.document
-import react.dom.*
+import react.dom.render
 import router
 
 fun main(args: Array<String>) {

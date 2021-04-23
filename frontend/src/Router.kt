@@ -1,3 +1,4 @@
+import chat.chatRoom
 import index.index
 import react.RBuilder
 import react.RComponent
@@ -20,6 +21,10 @@ class Router : RComponent<RProps, RState>() {
                     h1{
                         +"Hello World"
                     }
+                }
+
+                route("/chat/room", exact = true){
+                    chatRoom()
                 }
             }
         }
