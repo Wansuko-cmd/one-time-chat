@@ -9,6 +9,7 @@ val flywayVersion: String by project
 plugins {
     application
     kotlin("jvm") version "1.4.32"
+    kotlin("plugin.serialization") version "1.4.32"
 }
 
 group = "com.example"
@@ -47,4 +48,8 @@ dependencies {
 
     //WebSocket
     implementation("io.ktor:ktor-websockets:$ktorVersion")
+
+    //Jsonを読むためのもの
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.1.0")
+    implementation("io.ktor:ktor-client-serialization:$ktorVersion")
 }

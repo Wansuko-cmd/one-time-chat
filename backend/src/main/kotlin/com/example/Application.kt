@@ -15,6 +15,7 @@ fun Application.main() {
 
     install(WebSockets)
 
+
     val databaseFactory = DatabaseFactory
     databaseFactory.init()
 
